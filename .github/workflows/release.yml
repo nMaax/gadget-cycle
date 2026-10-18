@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - run: sudo apt-get install -y luajit && luajit test_gadget_cycle.lua
+      - run: sudo apt-get install -y luajit && luajit tests/test_gadget_cycle.lua
       - run: sed -i "s/^local VERSION = \"dev\"/local VERSION = \"${GITHUB_REF_NAME#v}\"/" bin/x64/plugins/cyber_engine_tweaks/mods/gadget_cycle/init.lua && grep -q "^local VERSION = \"${GITHUB_REF_NAME#v}\"" bin/x64/plugins/cyber_engine_tweaks/mods/gadget_cycle/init.lua
       - run: zip -r gadget_cycle.zip bin
       - run: gh release create "$GITHUB_REF_NAME" gadget_cycle.zip --title "Gadget Cycle $GITHUB_REF_NAME" --generate-notes

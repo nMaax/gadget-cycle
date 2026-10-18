@@ -106,9 +106,19 @@ local function inMenu()
     return ok and res == true
 end
 
+-- Kiroshi scanner is active (mouse wheel zooms there). Same check as the game's scanner HUD: Vision == Focus (1).
+local function isScanning(player)
+    local ok, res = pcall(function()
+        local defs = Game.GetAllBlackboardDefs()
+        return Game.GetBlackboardSystem():GetLocalInstanced(player:GetEntityID(), defs.PlayerStateMachine)
+            :GetInt(defs.PlayerStateMachine.Vision)
+    end)
+    return ok and tonumber(res) == 1
+end
+
 local function cycleGadget()
     local player = Game.GetPlayer()
-    if not player or inMenu() then return end
+    if not player or inMenu() or isScanning(player) then return end
     local es = Game.GetScriptableSystemsContainer():Get("EquipmentSystem")
     local pd = es:GetPlayerData(player)
     local cur = pd:GetActiveGadget()

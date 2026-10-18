@@ -1,4 +1,4 @@
--- Mock-Game self-test for Gadget Cycle. Run from the repo root: luajit test_gadget_cycle.lua
+-- Mock-Game self-test for Gadget Cycle. Run from the repo root: luajit tests/test_gadget_cycle.lua
 local MOD = "bin/x64/plugins/cyber_engine_tweaks/mods/gadget_cycle/"
 
 local inputs, events = {}, {}
@@ -34,12 +34,15 @@ local es = {
     IsEquipped = function(_, _, id) return id.installed == true end,
     QueueRequest = function(_, req) active = req end,
 }
-local player = {}
-local menuOpen = false
+local player = { GetEntityID = function() return 1 end }
+local menuOpen, vision = false, 0
 Game = {
-    GetAllBlackboardDefs = function() return { UI_System = { IsInMenu = "IsInMenu" } } end,
-    GetBlackboardSystem = function() return { Get = function() return {
-        GetBool = function() return menuOpen end } end } end,
+    GetAllBlackboardDefs = function() return { UI_System = { IsInMenu = "IsInMenu" },
+        PlayerStateMachine = { Vision = "Vision" } } end,
+    GetBlackboardSystem = function() return {
+        Get = function() return { GetBool = function() return menuOpen end } end,
+        GetLocalInstanced = function() return { GetInt = function() return vision end } end,
+    } end,
     GetPlayer = function() return player end,
     GetScriptableSystemsContainer = function() return { Get = function() return es end } end,
     GetTransactionSystem = function() return { GetItemList = function()
@@ -70,6 +73,11 @@ assert(active.key == "Items.GrenadeFrag")
 menuOpen = true
 assert(press() == "Items.GrenadeFrag")
 menuOpen = false
+
+-- Kiroshi scanner active (wheel zooms): silent
+vision = 1
+assert(press() == "Items.GrenadeFrag")
+vision = 0
 
 -- uninstalled ability is never picked even if favorited
 assert(mod.pickNext({ { key = "A", installed = false }, { key = "B" } }, nil, { A = true }).key == "B")

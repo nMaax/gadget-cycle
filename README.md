@@ -13,7 +13,7 @@ In these clips the cycle key is bound to **mouse wheel down**. To free it, wheel
 - **Cycle hotkey**: each press puts the next favorite on the combat-gadget button. Throw or activate it with your usual key.
 - **Favorites checklist** in the CET overlay. If nothing is ticked, it cycles everything you own.
 - **Key lock slider**: ignores repeated presses for a short time (0.35 s by default), so a hard mouse-wheel flick moves one step instead of several.
-- **Stays quiet** while a game menu or the CET overlay is open.
+- **Stays quiet** while a game menu, the CET overlay or the Kiroshi scanner is open (so zooming with the wheel doesn't cycle).
 
 ## Requirements
 
@@ -67,15 +67,15 @@ Settings are saved to `favorites.json` next to `init.lua`. The favorites list is
 ## Development
 
 - All code is in `bin/x64/plugins/cyber_engine_tweaks/mods/gadget_cycle/init.lua`. After editing, use *Reload All Mods* in the CET overlay.
-- Run the mock self-test: `luajit test_gadget_cycle.lua` (prints `ok` on success).
+- Run the mock self-test: `luajit tests/test_gadget_cycle.lua` (prints `ok` on success).
 
 ### Mock self-test
 
-The mod calls game objects (`Game.GetPlayer()`, the equipment and inventory systems, …) that only exist inside Cyberpunk. `test_gadget_cycle.lua` replaces them with small fakes (a made-up inventory, a gadget button that just remembers what was assigned, a toggleable menu flag) and then loads the real `init.lua` against them. It checks:
+The mod calls game objects (`Game.GetPlayer()`, the equipment and inventory systems, …) that only exist inside Cyberpunk. `tests/test_gadget_cycle.lua` replaces them with small fakes (a made-up inventory, a gadget button that just remembers what was assigned, a toggleable menu flag) and then loads the real `init.lua` against them. It checks:
 
 - presses cycle through grenades and installed abilities, counting duplicate grenade stacks once and skipping uninstalled cyberware and non-gadget items
 - a burst of presses within the key lock (a mouse-wheel flick) moves only one step
-- presses do nothing while a menu is open, or in the main menu with no player loaded
+- presses do nothing while a menu or the scanner is open, or in the main menu with no player loaded
 - only favorites are cycled; if none of the favorites are owned, everything is cycled
 
 It verifies the mod's own logic, not the game: whether the real game calls behave like the fakes can only be checked in-game. The release workflow runs it before publishing, so a change that breaks the logic doesn't get released.
