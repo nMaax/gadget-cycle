@@ -2,7 +2,7 @@
 
 A tiny [Cyber Engine Tweaks](https://github.com/maximegmd/CyberEngineTweaks) mod for **Cyberpunk 2077 (2.x)**: set a hotkey to cycle the combat-gadget button through your grenades and ability cyberware (Optical Camo, Projectile Launch System), without opening the Alt radial wheel.
 
-In these clips the cycle key is bound to **mouse wheel down**. To free it, wheel down was unbound from *Previous weapon* in the game's settings, using [this mod](https://www.nexusmods.com/cyberpunk2077/mods/11429) to allow leaving that action unbound.
+In these clips the cycle key is bound to **mouse wheel down**. To free it, wheel down was unbound from *Previous weapon* in the game's settings, using [Allow Unbound Actions](https://www.nexusmods.com/cyberpunk2077/mods/11429) by RMK to allow leaving that action unbound.
 
 <p align="center"><img src="docs/demo.gif" alt="Cycling gadgets in combat"></p>
 
