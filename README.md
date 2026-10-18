@@ -1,8 +1,6 @@
 # Gadget Cycle
 
-A tiny [Cyber Engine Tweaks](https://github.com/maximegmd/CyberEngineTweaks) mod for **Cyberpunk 2077 (2.x)**:
-one hotkey cycles the combat-gadget button through your **favorite** grenades and ability
-cyberware (Optical Camo, Projectile Launch System), without opening the Alt radial wheel.
+A tiny [Cyber Engine Tweaks](https://github.com/maximegmd/CyberEngineTweaks) mod for **Cyberpunk 2077 (2.x)**: set a hotkey to cycle the combat-gadget button through your grenades and ability cyberware (Optical Camo, Projectile Launch System), without opening the Alt radial wheel.
 
 ![Cycling gadgets in combat](docs/demo.gif)
 
@@ -14,7 +12,6 @@ cyberware (Optical Camo, Projectile Launch System), without opening the Alt radi
 - **Favorites checklist** in the CET overlay. If nothing is ticked, it cycles everything you own.
 - **Key lock slider**: ignores repeated presses for a short time (0.35 s by default), so a hard mouse-wheel flick moves one step instead of several.
 - **Stays quiet** while a game menu or the CET overlay is open.
-- Only installed ability cyberware is cycled. Grenade stacks of the same type count once.
 
 ## Requirements
 
@@ -24,12 +21,6 @@ cyberware (Optical Camo, Projectile Launch System), without opening the Alt radi
 ## Installation
 
 Download `gadget_cycle.zip` from the [latest release](../../releases/latest).
-
-### With Amethyst (supported)
-
-1. Install Cyber Engine Tweaks first, if you don't have it.
-2. In Amethyst, add `gadget_cycle.zip` as a new mod (install from archive / drag and drop the zip).
-3. Enable the mod and deploy, then start the game.
 
 ### Manually
 
@@ -44,9 +35,11 @@ Cyberpunk 2077/bin/x64/plugins/cyber_engine_tweaks/mods/gadget_cycle/init.lua
 
 Not supported.
 
-## Upgrading from QuickFav
+### Amethyst (supported)
 
-Remove the old `quickfav` mod. To keep your settings, copy its `favorites.json` into the `gadget_cycle` folder. Set the key binding again in CET.
+1. Install Cyber Engine Tweaks first, if you don't have it.
+2. In Amethyst, add `gadget_cycle.zip` as a new mod (install from archive / drag and drop the zip).
+3. Enable the mod and deploy, then start the game.
 
 ## Usage
 
@@ -68,4 +61,3 @@ Settings are saved to `favorites.json` next to `init.lua`. The favorites list is
 
 - All code is in `bin/x64/plugins/cyber_engine_tweaks/mods/gadget_cycle/init.lua`. After editing, use *Reload All Mods* in the CET overlay.
 - Run the mock self-test: `luajit test_gadget_cycle.lua`
-- Release: push a tag (`git tag v1.2.0 && git push --tags`). GitHub Actions runs the test, zips `bin/` and publishes the release.
