@@ -1,6 +1,11 @@
 -- Gadget Cycle: one hotkey cycles the combat-gadget button (grenades / Optical Camo / launcher)
 -- through favorites picked in the CET overlay. Empty favorites = cycle everything owned.
+--
+-- Author:  nMaax
+-- Source:  https://github.com/nMaax/gadget-cycle
+-- Version: set from the git tag by the release workflow ("dev" in the repo)
 
+local VERSION = "dev"
 local FAV_FILE = "favorites.json"
 local cooldown = 0.35    -- seconds; a hard mouse-wheel flick sends many ticks, only the first counts
 local favs = {}          -- [tdbidString] = true
@@ -124,7 +129,10 @@ registerInput("cycle_gadget", "Cycle favorite grenade / ability", function(down)
     cycleGadget()
 end)
 
-registerForEvent("onInit", loadFavs)
+registerForEvent("onInit", function()
+    loadFavs()
+    log("v" .. VERSION .. " loaded")
+end)
 
 registerForEvent("onUpdate", function(dt) now = now + dt end)
 
@@ -144,7 +152,7 @@ end)
 
 registerForEvent("onDraw", function()
     if not overlayOpen then return end
-    if ImGui.Begin("Gadget Cycle") then
+    if ImGui.Begin("Gadget Cycle " .. VERSION .. "###GadgetCycle") then
         local val, used = ImGui.SliderFloat("Key lock (s)", cooldown, 0, 1, "%.2f")
         if used then cooldown, dirty = val, true end
         ImGui.Separator()
