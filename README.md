@@ -4,6 +4,8 @@ A tiny [Cyber Engine Tweaks](https://github.com/maximegmd/CyberEngineTweaks) mod
 one hotkey cycles the combat-gadget button through your **favorite** grenades and ability
 cyberware (Optical Camo, Projectile Launch System), without opening the Alt radial wheel.
 
+![Cycling gadgets in combat](docs/demo.gif)
+
 ## Features
 
 - **Cycle hotkey**: each press puts the next favorite on the combat-gadget button. Throw or activate it with your usual key.
@@ -50,6 +52,8 @@ Remove the old `quickfav` mod. To keep your settings, copy its `favorites.json` 
 2. **Bindings** → set a key for *Cycle favorite grenade / ability*.
 3. In the **Gadget Cycle** window, tick your favorites and adjust *Key lock (s)* if needed.
 4. Close the overlay and press your key. The gadget icon on the HUD changes.
+
+![Picking favorites and binding the key in the CET overlay](docs/setup.gif)
 
 Settings are saved to `favorites.json` next to `init.lua`. The favorites list is saved as soon as you tick or untick an item; the slider value is saved when you close the overlay.
 
