@@ -62,4 +62,4 @@ Settings are saved to `favorites.json` next to `init.lua`. The favorites list is
 
 - All code is in `bin/x64/plugins/cyber_engine_tweaks/mods/gadget_cycle/init.lua`. After editing, use *Reload All Mods* in the CET overlay.
 - Run the mock self-test: `luajit test_gadget_cycle.lua`
-- Build the release zip: `zip -r gadget_cycle.zip bin`
+- Release: push a tag (`git tag v1.2.0 && git push --tags`). GitHub Actions runs the test, zips `bin/` and publishes the release.

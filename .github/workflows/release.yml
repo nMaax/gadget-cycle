@@ -1,0 +1,19 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get install -y luajit && luajit test_gadget_cycle.lua
+      - run: zip -r gadget_cycle.zip bin
+      - run: gh release create "$GITHUB_REF_NAME" gadget_cycle.zip --title "Gadget Cycle $GITHUB_REF_NAME" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}
