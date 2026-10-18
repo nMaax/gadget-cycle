@@ -1,5 +1,5 @@
--- Mock-Game self-test for quickfav. Run from the repo root: luajit test_quickfav.lua
-local MOD = "bin/x64/plugins/cyber_engine_tweaks/mods/quickfav/"
+-- Mock-Game self-test for Gadget Cycle. Run from the repo root: luajit test_gadget_cycle.lua
+local MOD = "bin/x64/plugins/cyber_engine_tweaks/mods/gadget_cycle/"
 
 local inputs, events = {}, {}
 function registerInput(slug, _, fn) inputs[slug] = fn end

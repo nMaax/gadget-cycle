@@ -1,4 +1,4 @@
--- QuickFav: one hotkey cycles the combat-gadget button (grenades / Optical Camo / launcher)
+-- Gadget Cycle: one hotkey cycles the combat-gadget button (grenades / Optical Camo / launcher)
 -- through favorites picked in the CET overlay. Empty favorites = cycle everything owned.
 
 local FAV_FILE = "favorites.json"
@@ -9,7 +9,7 @@ local dirty = false      -- cooldown changed, save on overlay close
 local cached = {}        -- items shown in the overlay, refreshed on open
 local now, lastCycle = 0, -math.huge
 
-local function log(msg) print("[QuickFav] " .. msg) end
+local function log(msg) print("[GadgetCycle] " .. msg) end
 
 -- File format: { "favorites": [...], "cooldown": 0.35 }; a bare array (old format) = favorites only.
 local function loadFavs()
@@ -144,7 +144,7 @@ end)
 
 registerForEvent("onDraw", function()
     if not overlayOpen then return end
-    if ImGui.Begin("QuickFav") then
+    if ImGui.Begin("Gadget Cycle") then
         local val, used = ImGui.SliderFloat("Key lock (s)", cooldown, 0, 1, "%.2f")
         if used then cooldown, dirty = val, true end
         ImGui.Separator()
