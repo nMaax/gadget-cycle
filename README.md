@@ -6,6 +6,8 @@ cyberware (Optical Camo, Projectile Launch System), without opening the Alt radi
 
 ![Cycling gadgets in combat](docs/demo.gif)
 
+![Close-up of the HUD: the gadget slot switches with each press](docs/hud-zoom.gif)
+
 ## Features
 
 - **Cycle hotkey**: each press puts the next favorite on the combat-gadget button. Throw or activate it with your usual key.
