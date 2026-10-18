@@ -45,6 +45,9 @@ Not supported.
 
 ## Usage
 
+> [!NOTE]
+> The cycle key is **unbound** after installing. Set it in the CET overlay (step 2), or the mod does nothing.
+
 1. Load a save and open the CET overlay (default `~`).
 2. **Bindings** → set a key for *Cycle favorite grenade / ability*.
 3. In the **Gadget Cycle** window, tick your favorites and adjust *Key lock (s)* if needed.
